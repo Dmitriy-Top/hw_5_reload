@@ -23,7 +23,6 @@ public class AddToCart implements ConsoleExectutable {
     public String execut() {
         if (product==null) return "Товар не найден";
         CartDAO.create(product);
-        ProductDAO.delete(product.getId());
         return String.format("Товар - %s добавлен в корзину",product.getName());
     }
 }
