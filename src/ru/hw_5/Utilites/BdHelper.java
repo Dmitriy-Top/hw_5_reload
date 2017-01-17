@@ -166,4 +166,11 @@ public class BdHelper {
         }
         return array;
     }
+     public void clouseConnection(){
+         try {
+             connection.close();
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+     }
 }
