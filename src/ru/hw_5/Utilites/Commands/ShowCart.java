@@ -1,7 +1,8 @@
 package ru.hw_5.Utilites.Commands;
 
+import ru.hw_5.Entity.Product;
+import ru.hw_5.Utilites.CartDAO;
 import ru.hw_5.Utilites.ConsoleExectutable;
-import ru.hw_5.Utilites.ProductDAO;
 
 /**
  * Created by admin on 22.11.2016.
@@ -14,11 +15,13 @@ public class ShowCart implements ConsoleExectutable {
     @Override
     public String execut() {
         for (int i = 1; i <= cartSize; i++) {
-            result += CartDAO.get(i).toString();
-            amount += CartDAO.get(i).getPrice();
+            Product product = CartDAO.get(i);
+            product.setOnCart(true);
+            result += product.toString();
+            amount += product.getPrice();
         }
         if (result == null) result = "Корзина пуста";
-        result+=String.format("Общая сумма покупки: %s",amount);
+        result+=String.format("Общая сумма покупки: %.1f",amount);
         return result;
     }
 

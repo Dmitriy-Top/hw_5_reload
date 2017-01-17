@@ -4,6 +4,10 @@ import ru.hw_5.Entity.Product;
 import ru.hw_5.Utilites.ConsoleExectutable;
 import ru.hw_5.Utilites.ProductDAO;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 
 /**
@@ -26,6 +30,7 @@ public class ShowProductImg implements ConsoleExectutable {
             os.close();
             File file = new File(TmpImgPath);
             FullImgPath=file.getAbsolutePath();
+            DisplayImage(FullImgPath);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -41,5 +46,20 @@ public class ShowProductImg implements ConsoleExectutable {
         } catch (Exception e){
             this.product = ProductDAO.getByName(args);
         }
+    }
+    public void DisplayImage(String filePath) throws IOException
+    {
+        BufferedImage img= ImageIO.read(new File(filePath));
+        ImageIcon icon=new ImageIcon(img);
+        int height = icon.getIconHeight();
+        int width = icon.getIconWidth();
+        System.out.println(width);
+        JFrame frame=new JFrame();
+        frame.setLayout(new FlowLayout());
+        frame.setSize(width,height);
+        JLabel lbl=new JLabel();
+        lbl.setIcon(icon);
+        frame.add(lbl);
+        frame.setVisible(true);
     }
 }

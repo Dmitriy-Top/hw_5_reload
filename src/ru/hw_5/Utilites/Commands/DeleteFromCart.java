@@ -1,6 +1,7 @@
 package ru.hw_5.Utilites.Commands;
 
 import ru.hw_5.Entity.Product;
+import ru.hw_5.Utilites.CartDAO;
 import ru.hw_5.Utilites.ConsoleExectutable;
 import ru.hw_5.Utilites.ProductDAO;
 
@@ -13,16 +14,17 @@ public class DeleteFromCart implements ConsoleExectutable {
     public String execut() {
         if (product==null) return "Товар не найден";
         CartDAO.delete(product);
-        ProductDAO.delete(product.getId());
-        return String.format("Товар - %s добавлен в корзину",product.getName());
+        product.setQuantityOnCart(product.getQuantityOnCart()-1);
+        product.setQuantityOnShop(product.getQuantityOnShop()+1);
+        return String.format("Товар - %s удален из корзины",product.getName());
     }
 
     public DeleteFromCart(String args) {
         try{
             int id = Integer.parseInt(args);
-            this.product = ProductDAO.getById(id);
+            this.product = CartDAO.getById(id);
         } catch (Exception e){
-            this.product = ProductDAO.getByName(args);
+            this.product = CartDAO.getByName(args);
         }
     }
 }

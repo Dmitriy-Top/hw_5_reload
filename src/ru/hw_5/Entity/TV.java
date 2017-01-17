@@ -6,8 +6,8 @@ package ru.hw_5.Entity;
 public class TV extends Product {
     private float diagonal;
 
-    public TV(String name, float price, int categoryID, float diagonal,String imgPath) {
-        super(name, price, categoryID,imgPath);
+    public TV(String name, float price, int categoryID, float diagonal,String imgPath,int quantity) {
+        super(name, price, categoryID,imgPath,quantity);
         this.diagonal = diagonal;
     }
 
@@ -20,6 +20,7 @@ public class TV extends Product {
     }
     @Override
     public String toString() {
-        return String.format("Название: %s , стоимость: %s руб., id продукта: %s, диагональ: %s.\n",super.getName(),super.getPrice(),super.getId(),diagonal);
+        if (super.isOnCart())return String.format("Название: %s , стоимость: %.1f руб., id продукта: %s, диагональ: %s.\n",super.getName(),super.getPrice(),super.getId(),diagonal);
+        return String.format("Название: %s , стоимость: %s руб., id продукта: %s, диагональ: %s, колличество: %s.\n",super.getName(),super.getPrice(),super.getId(),diagonal,super.getQuantityOnShop());
     }
 }

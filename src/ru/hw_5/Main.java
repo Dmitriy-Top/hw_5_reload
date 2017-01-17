@@ -3,12 +3,6 @@ package ru.hw_5;
 
 import ru.hw_5.Utilites.*;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Scanner;
-
 public class Main {
     private static boolean isStop;
 
@@ -21,6 +15,7 @@ public class Main {
             String result = command.execut();
             UserMassageHelper.showMassageToUser(result);
         }
+        //BdHelper.getInstance();
     }
 
     public static void setIsStop(boolean isStop) {

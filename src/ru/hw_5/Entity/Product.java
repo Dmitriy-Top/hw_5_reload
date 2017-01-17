@@ -12,8 +12,10 @@ public class Product extends AbstractProduct implements Serializable{
     private float price;
     private int categoryID;
     private String imgPath;
+    private boolean onCart;
 
-    public Product(String name, float price, int categoryID,String imgPath) {
+    public Product(String name, float price, int categoryID,String imgPath, int quantity) {
+        super(quantity);
         Product.idCounterPlus();
         this.name = name;
         this.price = price;
@@ -30,7 +32,7 @@ public class Product extends AbstractProduct implements Serializable{
         this.name = name;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
@@ -61,6 +63,13 @@ public class Product extends AbstractProduct implements Serializable{
         return imgPath;
     }
 
+    public boolean isOnCart() {
+        return onCart;
+    }
+
+    public void setOnCart(boolean onCart) {
+        this.onCart = onCart;
+    }
 
     @Override
     public String toString() {

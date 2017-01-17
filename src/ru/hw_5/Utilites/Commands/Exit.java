@@ -1,6 +1,7 @@
 package ru.hw_5.Utilites.Commands;
 
 import ru.hw_5.Main;
+import ru.hw_5.Utilites.CartDAO;
 import ru.hw_5.Utilites.ConsoleExectutable;
 
 /**
@@ -9,8 +10,8 @@ import ru.hw_5.Utilites.ConsoleExectutable;
 public class Exit implements ConsoleExectutable {
     @Override
     public String execut() {
-        Main.setIsStop(true);
         CartDAO.saveCart();
+        Main.setIsStop(true);
         return "Всего доброго";
     }
 }
