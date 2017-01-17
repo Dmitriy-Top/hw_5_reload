@@ -15,7 +15,6 @@ public class Main {
             String result = command.execut();
             UserMassageHelper.showMassageToUser(result);
         }
-        //BdHelper.getInstance();
     }
 
     public static void setIsStop(boolean isStop) {
